@@ -1,22 +1,22 @@
-import axios from 'axios'
+import axios from 'axios';
 
 axios({
-    params: {
-        _limit: 10,
-        _page: 3;
-    }
+  params: {
+    _limit: 10,
+    _page: 3,
+  },
 })
-    .then(res => {
-        console.log(res);
-    })
-    .catch(error => {
-     console.log(error);
-     
-    })
+  .then(res => {
+    console.log(res);
+  })
+  .catch(error => {
+    console.log(error);
+  });
 function createMarkup(arr) {
-    return arr.map({ previewURL, tags } =>
-        `<li>
-            <img src = "${previewURL} 
-         </li>
-      )
- }
+  return arr.map(
+    ({ previewURL, tags }) =>
+      `<li>
+            <img src = "${previewURL}> 
+         </li>`
+  );
+}
