@@ -36,13 +36,13 @@ export function getImagesByQuery(query) {
             comments,
             downloads,
           }) =>
-            `<div class="card-img"><a href="${webformatURL}"><img src=${webformatURL} data-sourse="${largeImageURL} alt="${tags}"></a><p>Likes ${likes}</p>
-        <p>Views ${views}</p><p>Comments ${comments}</p>
-        <p>Downloads ${downloads}</p></div>`
+            `<div class="card-img"><a class="img-link" href="${webformatURL}"><img class="img" src=${webformatURL} data-sourse="${largeImageURL} alt="${tags}"></a><div class="caption"><p>Likes<br> ${likes}</p>
+        <p>Views<br> ${views}</p><p>Comments<br> ${comments}</p>
+        <p>Downloads<br> ${downloads}</p></div></div>`
         )
         .join('');
       gallery.innerHTML = queryArr;
-
+      form.reset();
       new SimpleLightbox('.gallery a', {
         captionsData: 'alt',
         captionDelay: 250,
