@@ -1,7 +1,9 @@
 import SimpleLightbox from 'simplelightbox';
 // Додатковий імпорт стилів
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import { gallery, form } from './pixabay-api.js';
+import { form } from './pixabay-api.js';
+const gallery = document.querySelector('.gallery');
+const loader = document.querySelector('.loader');
 export function createGallery(images) {
   const queryArr = images
     .map(
@@ -26,12 +28,12 @@ export function createGallery(images) {
     captionDelay: 250,
   });
 }
-export function showLoader(loader) {
+export function showLoader() {
   loader.classList.remove('hidden');
 }
-export function hideLoader(loader) {
+export function hideLoader() {
   loader.classList.add('hidden');
 }
-export function clearGallery(gallery) {
+export function clearGallery() {
   gallery.innerHTML = '';
 }

@@ -3,17 +3,12 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 // Описаний у документації
 
-import { createGallery, hideLoader, clearGallery } from './render-functions';
-
 import axios from 'axios';
 export const form = document.querySelector('.form');
-export const input = document.querySelector('input');
-export const gallery = document.querySelector('.gallery');
-export const loader = document.querySelector('.loader');
+export const input = document.querySelector('input[name="search-text"]');
+
 export function getImagesByQuery(query) {
-  console.log('getImagesByQuery run with query:', query);
-  clearGallery(gallery);
-  axios
+  return axios
     .get('https://pixabay.com/api/', {
       params: {
         key: '52345527-f2cab98277e64c5f6ad4361cb',
@@ -24,22 +19,11 @@ export function getImagesByQuery(query) {
       },
     })
     .then(response => {
-      console.log(response.data.hits);
       const images = [...response.data.hits];
-      if (!images.length) {
-        iziToast.error({
-          title: 'Sorry',
-          message:
-            'There are no images matching your search query. Please try again!',
-          position: 'center',
-        });
-        return;
-      }
-
-      createGallery(images);
+      return images;
     })
     .catch(error => {
-      console.error(error);
-    })
-    .finally(() => hideLoader(loader));
+      console.error('Pixabay API error:', error);
+      throw error;
+    });
 }
