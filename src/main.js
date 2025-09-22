@@ -17,7 +17,7 @@ function handleSubmit(event) {
   const query = input.value.trim().toLowerCase();
   console.log('input.value:', input.value);
   console.log('query:', query);
-  if (!query) {
+  if (query) {
     showLoader();
     clearGallery();
     getImagesByQuery(query)
