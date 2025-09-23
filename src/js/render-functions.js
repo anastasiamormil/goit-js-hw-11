@@ -4,6 +4,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { form } from './pixabay-api.js';
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+let lightbox;
 export function createGallery(images) {
   const queryArr = images
     .map(
@@ -23,10 +24,14 @@ export function createGallery(images) {
     .join('');
   gallery.innerHTML = queryArr;
   form.reset();
-  new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+    });
+  } else {
+    lightbox.refresh();
+  }
 }
 export function showLoader() {
   loader.classList.remove('hidden');
