@@ -15,8 +15,7 @@ function handleSubmit(event) {
   event.preventDefault();
 
   const query = input.value.trim().toLowerCase();
-  console.log('input.value:', input.value);
-  console.log('query:', query);
+
   if (!query) {
     iziToast.warning({
       title: 'Caution',
@@ -42,7 +41,6 @@ function handleSubmit(event) {
       createGallery(images);
     })
     .catch(error => {
-      console.error('Pixabay API error:', error);
       iziToast.error({
         title: 'Error',
         message: 'Something went wrong while fetching images',
